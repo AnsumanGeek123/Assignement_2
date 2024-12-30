@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Search</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Search for Colleges by Location</h1>
+
+    <form action="/search" method="POST">
+      <label for="place">Enter Location:</label>
+      <input type="text" id="place" name="place" placeholder="e.g., New York" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <% if (colleges) { %>
+        <h2>Colleges in <%= place %>:</h2>
+        <ul>
+          <% colleges.forEach(function(college) { %>
+            <li><%= college.name %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+      <% if (error) { %>
+        <p><%= error %></p>
+      <% } %>
+      
+  </div>
+</body>
+</html>
